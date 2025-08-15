@@ -1,0 +1,90 @@
+
+PolyForm Noncommercial 1.0.0
+
+Copyright (c) 2025 源滚滚
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+use the Software solely for noncommercial purposes, subject to the
+following conditions.
+
+1. Definitions
+
+	a. "Commercial Use" means using, copying, modifying, or distributing the
+		 Software, or any derivative works, for commercial purposes, including
+		 but not limited to: offering the Software as part of a service for a
+		 fee, using the Software to provide revenue-generating functionality,
+		 selling the Software, or otherwise exploiting the Software for
+		 commercial advantage or monetary compensation.
+
+	b. "Noncommercial Use" means use of the Software for personal,
+		 educational, academic research, or other purposes that are not
+		 Commercial Use.
+
+2. Grant of Rights
+
+	Subject to the terms and conditions of this License, the Licensor hereby
+	grants to You a worldwide, non-exclusive, non-transferable, non-sublicensable
+	license to exercise the rights in the Software as expressly permitted by
+	this License, solely for Noncommercial Use. The rights granted under this
+	License may include the right to reproduce, prepare derivative works of,
+	publicly display, publicly perform, sublicense (only as permitted below),
+	and distribute the Software, but only to the extent necessary to exercise
+	the rights granted for Noncommercial Use.
+
+3. Restrictions
+
+	a. You may not use the Software for Commercial Use without obtaining a
+		 separate written license from the Licensor that expressly permits such
+		 Commercial Use.
+
+	b. You may not remove, obscure, or alter any copyright, trademark, patent
+		 or other proprietary notices contained in the Software.
+
+4. Termination
+
+	This License and the rights granted hereunder will terminate automatically
+	if You fail to comply with any of the terms of this License. Upon
+	termination, You must cease all use of the Software and destroy all copies
+	of the Software in Your possession or control, except to the extent any
+	licenses granted by third parties to You are unaffected.
+
+5. Disclaimer of Warranty
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+	THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+	IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+6. Limitation of Liability
+
+	IN NO EVENT WILL THE LICENSOR BE LIABLE FOR ANY LOST REVENUE, PROFIT OR
+	DATA, OR FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR
+	PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY,
+	ARISING OUT OF OR IN CONNECTION WITH THIS LICENSE OR THE USE OF OR INABILITY
+	TO USE THE SOFTWARE.
+
+7. Governing Law
+
+	This License will be governed by and construed in accordance with the laws
+	of the jurisdiction in which the Licensor is located, without regard to
+	conflicts of law principles.
+
+8. Miscellaneous
+
+	If any provision of this License is held to be unenforceable, such
+	provision shall be reformed only to the extent necessary to make it
+	enforceable, and the remaining provisions of this License will remain in
+	full force and effect.
+
+For the official authoritative text and any updates, see:
+https://polyformproject.org/licenses/noncommercial/1.0.0/
+
+---
+Notes:
+- Replace <YEAR> and <COPYRIGHT HOLDER> with the appropriate values.
+- This file includes the full human-readable license summary appropriate for
+	repository distribution; the official license text at the link above is the
+	authoritative version.
