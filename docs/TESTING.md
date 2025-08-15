@@ -63,7 +63,7 @@ pnpm test:all
 
 ### 目录组织
 
-```
+```text
 tests/
 ├── unit/                   # 单元测试
 │   ├── core/              # 核心算法测试
@@ -119,7 +119,7 @@ describe('SM3 摘要算法', () => {
     const input = hexToBytes('616263'); // "abc"
     const result = await digest(input);
     const resultHex = bytesToHex(result);
-    
+
     expect(resultHex.toUpperCase()).toBe(
       '66C7F0F462EEEDD9D1F2D46BDC10E4E24167C4875CF2F7A2297DA02B8F4BA8E0'
     );
@@ -148,7 +148,7 @@ import { test, expect } from '@playwright/test';
 test('SM3 摘要功能', async ({ page }) => {
   await page.goto('/examples/browser/');
   await page.click('button:has-text("测试 SM3 摘要")');
-  
+
   const result = await page.locator('#sm3-result').textContent();
   expect(result).toMatch(/^[0-9a-fA-F]{64}$/);
 });
@@ -162,11 +162,15 @@ import { benchmark } from '../utils/helpers';
 describe('性能测试', () => {
   it('SM3 摘要性能', async () => {
     const data = new Uint8Array(1024); // 1KB
-    
-    const result = await benchmark('SM3 摘要', async () => {
-      await digest(data);
-    }, 1000);
-    
+
+    const result = await benchmark(
+      'SM3 摘要',
+      async () => {
+        await digest(data);
+      },
+      1000
+    );
+
     expect(result.opsPerSecond).toBeGreaterThan(1000);
   });
 });
@@ -183,11 +187,12 @@ expect.extend({
     const pass = received instanceof Uint8Array && received.length > 0;
     return {
       pass,
-      message: () => pass 
-        ? `Expected ${received} not to be a valid Uint8Array`
-        : `Expected ${received} to be a valid Uint8Array`
+      message: () =>
+        pass
+          ? `Expected ${received} not to be a valid Uint8Array`
+          : `Expected ${received} to be a valid Uint8Array`,
     };
-  }
+  },
 });
 
 // 使用自定义匹配器
@@ -199,13 +204,13 @@ expect(hexString).toBeValidHexString();
 ### 测试工具函数
 
 ```typescript
-import { 
-  hexToBytes, 
-  bytesToHex, 
-  randomBytes, 
+import {
+  hexToBytes,
+  bytesToHex,
+  randomBytes,
   compareBytes,
   benchmark,
-  loadTestVectors 
+  loadTestVectors,
 } from '../utils/helpers';
 
 // 加载标准测试向量
@@ -225,7 +230,9 @@ import { mockCrypto, mockConsole, setupGlobalMocks } from '../utils/mocks';
 
 beforeEach(() => {
   setupGlobalMocks();
-  vi.mocked(crypto.getRandomValues).mockImplementation(mockCrypto.getRandomValues);
+  vi.mocked(crypto.getRandomValues).mockImplementation(
+    mockCrypto.getRandomValues
+  );
 });
 ```
 
@@ -286,13 +293,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      
+
       - name: Install dependencies
         run: pnpm install
-      
+
       - name: Run tests
         run: pnpm test:all
-      
+
       - name: Upload coverage
         uses: codecov/codecov-action@v3
 ```
@@ -352,10 +359,10 @@ describe('功能模块', () => {
     it('应该满足特定条件', () => {
       // 准备 (Arrange)
       const input = createTestData();
-      
+
       // 执行 (Act)
       const result = functionUnderTest(input);
-      
+
       // 断言 (Assert)
       expect(result).toBe(expectedValue);
     });
@@ -382,18 +389,21 @@ it('应该处理异步错误', async () => {
 ### 常见问题
 
 **问题**: 测试超时
+
 ```bash
 # 增加超时时间
 vitest --testTimeout=60000
 ```
 
 **问题**: 内存不足
+
 ```bash
 # 增加内存限制
 node --max-old-space-size=4096 node_modules/.bin/vitest
 ```
 
 **问题**: 浏览器测试失败
+
 ```bash
 # 安装浏览器
 npx playwright install

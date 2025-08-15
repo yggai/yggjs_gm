@@ -103,7 +103,7 @@ git push origin feature/sm2-implementation
 
 ### 1. 测试结构
 
-```
+```text
 tests/
 ├── unit/           # 单元测试
 ├── integration/    # 集成测试
@@ -143,10 +143,13 @@ describe('SM3 摘要算法', () => {
   it('应该计算正确的摘要', async () => {
     const data = new TextEncoder().encode('abc');
     const hash = await digest(data);
-    
+
     expect(hash).toHaveLength(32);
-    expect(Array.from(hash).map(b => b.toString(16).padStart(2, '0')).join(''))
-      .toBe('66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0');
+    expect(
+      Array.from(hash)
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('')
+    ).toBe('66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0');
   });
 });
 ```
@@ -228,6 +231,7 @@ pnpm build --analyze
 ### 1. 常见问题
 
 **问题**: `pnpm install` 失败
+
 ```bash
 # 清理缓存
 pnpm store prune
@@ -236,12 +240,14 @@ pnpm install
 ```
 
 **问题**: TypeScript 类型错误
+
 ```bash
 # 重新生成类型
 pnpm type-check
 ```
 
 **问题**: ESLint 错误
+
 ```bash
 # 自动修复
 pnpm lint:fix

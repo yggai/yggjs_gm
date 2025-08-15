@@ -42,7 +42,7 @@ pnpm build:rollup:analyze
 
 ### 文件结构
 
-```
+```text
 dist/
 ├── index.js              # ESM 主入口
 ├── index.cjs             # CJS 主入口
@@ -72,12 +72,12 @@ dist/
 
 ### 格式支持
 
-| 格式 | 用途 | 文件 |
-|------|------|------|
-| **ESM** | 现代模块系统 | `*.js` |
-| **CJS** | Node.js 兼容 | `*.cjs` |
-| **UMD** | 浏览器全局使用 | `*.umd.js` |
-| **TypeScript** | 类型声明 | `*.d.ts` |
+| 格式           | 用途           | 文件       |
+| -------------- | -------------- | ---------- |
+| **ESM**        | 现代模块系统   | `*.js`     |
+| **CJS**        | Node.js 兼容   | `*.cjs`    |
+| **UMD**        | 浏览器全局使用 | `*.umd.js` |
+| **TypeScript** | 类型声明       | `*.d.ts`   |
 
 ## 导入方式
 
@@ -136,11 +136,11 @@ import { modPow } from 'yggjs-gm/core/math';
 
 ### 体积优化
 
-| 构建方式 | 主包大小 | 压缩后 | Gzip |
-|----------|----------|--------|------|
-| **开发** | ~200KB | ~80KB | ~25KB |
-| **生产** | ~150KB | ~60KB | ~20KB |
-| **按需** | ~50KB | ~20KB | ~8KB |
+| 构建方式 | 主包大小 | 压缩后 | Gzip  |
+| -------- | -------- | ------ | ----- |
+| **开发** | ~200KB   | ~80KB  | ~25KB |
+| **生产** | ~150KB   | ~60KB  | ~20KB |
+| **按需** | ~50KB    | ~20KB  | ~8KB  |
 
 ## 构建配置
 
@@ -158,7 +158,7 @@ export default defineConfig([
     minify: isProduction,
     target: ['es2020', 'node16'],
     platform: 'neutral',
-  }
+  },
 ]);
 ```
 
@@ -171,11 +171,11 @@ export default defineConfig([
     input: 'src/index.ts',
     output: [
       { file: 'dist/index.esm.js', format: 'esm' },
-      { file: 'dist/index.cjs.js', format: 'cjs' }
+      { file: 'dist/index.cjs.js', format: 'cjs' },
     ],
     plugins: [typescript(), terser()],
-    external: ['big-integer']
-  }
+    external: ['big-integer'],
+  },
 ]);
 ```
 
@@ -236,6 +236,7 @@ pnpm size-check
 ### 常见问题
 
 **问题**: 构建失败 "Cannot resolve module"
+
 ```bash
 # 检查依赖
 pnpm install
@@ -246,6 +247,7 @@ rm -rf node_modules/.cache
 ```
 
 **问题**: 类型声明错误
+
 ```bash
 # 重新生成类型
 pnpm type-check
@@ -253,6 +255,7 @@ pnpm build:prod
 ```
 
 **问题**: 导入路径错误
+
 ```bash
 # 验证导出配置
 node scripts/verify-build.js
