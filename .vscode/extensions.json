@@ -1,0 +1,43 @@
+{
+  "recommendations": [
+    // TypeScript 支持
+    "ms-vscode.vscode-typescript-next",
+    
+    // 代码格式化和质量
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    
+    // 测试支持
+    "vitest.explorer",
+    "ms-playwright.playwright",
+    
+    // Git 支持
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    
+    // 开发体验增强
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    
+    // 文档支持
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    
+    // 实用工具
+    "ms-vscode.hexdump",
+    "ms-vscode.vscode-hex-editor",
+    "christian-kohler.path-intellisense",
+    "visualstudioexptteam.vscodeintellicode",
+    
+    // 主题和图标
+    "pkief.material-icon-theme",
+    "github.github-vscode-theme"
+  ],
+  "unwantedRecommendations": [
+    // 避免冲突的扩展
+    "ms-vscode.vscode-typescript",
+    "hookyqr.beautify",
+    "ms-vscode.vscode-eslint-language-server"
+  ]
+}

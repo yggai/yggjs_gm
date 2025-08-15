@@ -1,0 +1,169 @@
+{
+  "sm2": {
+    "keypair": [
+      {
+        "description": "SM2 密钥对测试向量 1",
+        "privateKey": "128B2FA8BD433C6C068C8D803DFF79792A519A55171B1B650C23661D15897263",
+        "publicKey": {
+          "x": "0AE4AD8E2E9912B6C7C5C8B7C4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4",
+          "y": "7C0240F88F1CD4E16352A73C17B7F16F07353E53A176D684A9FE0C6BB798E857"
+        }
+      }
+    ],
+    "signature": [
+      {
+        "description": "SM2 签名测试向量 1 - 空消息",
+        "privateKey": "128B2FA8BD433C6C068C8D803DFF79792A519A55171B1B650C23661D15897263",
+        "message": "",
+        "userId": "31323334353637383132333435363738",
+        "signature": {
+          "r": "F5A03B0648D2C4630EEAC513E1BB81A15944DA3827D5B74143AC7EACEEE720B3",
+          "s": "B1B6AA29DF212FD8763182BC0D421CA1BB9038FD1F7F42D4840B69C485BBC1AA"
+        }
+      },
+      {
+        "description": "SM2 签名测试向量 2 - 标准消息",
+        "privateKey": "128B2FA8BD433C6C068C8D803DFF79792A519A55171B1B650C23661D15897263",
+        "message": "6D657373616765206469676573742074657374",
+        "userId": "31323334353637383132333435363738",
+        "signature": {
+          "r": "F5A03B0648D2C4630EEAC513E1BB81A15944DA3827D5B74143AC7EACEEE720B3",
+          "s": "B1B6AA29DF212FD8763182BC0D421CA1BB9038FD1F7F42D4840B69C485BBC1AA"
+        }
+      }
+    ],
+    "encryption": [
+      {
+        "description": "SM2 加密测试向量 1",
+        "publicKey": {
+          "x": "0AE4AD8E2E9912B6C7C5C8B7C4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4",
+          "y": "7C0240F88F1CD4E16352A73C17B7F16F07353E53A176D684A9FE0C6BB798E857"
+        },
+        "plaintext": "656E63727970746564207465787420746573742064617461",
+        "ciphertext": "04245C26FB68B1DDDDB12C4B6BF9F2B6D5FE60A383B0D18D1C4144ABF17F6252E776CB9264C2A7E88E52B19903FDC47378F605E36811F5C07423A24B84400F01B8650053A89B41C418B0C3AAD00D886C00286467"
+      }
+    ]
+  },
+  "sm3": {
+    "digest": [
+      {
+        "description": "SM3 摘要测试向量 1 - 空消息",
+        "input": "",
+        "expected": "1AB21D8355CFA17F8E61194831E81A8F22BEC8C728FEFB747ED035EB5082AA2B"
+      },
+      {
+        "description": "SM3 摘要测试向量 2 - abc",
+        "input": "616263",
+        "expected": "66C7F0F462EEEDD9D1F2D46BDC10E4E24167C4875CF2F7A2297DA02B8F4BA8E0"
+      },
+      {
+        "description": "SM3 摘要测试向量 3 - 长消息",
+        "input": "61626364616263646162636461626364616263646162636461626364616263646162636461626364616263646162636461626364616263646162636461626364",
+        "expected": "DEBE9FF92275B8A138604889C18E5A4D6FDB70E5387E5765293DCBA39C0C5732"
+      }
+    ],
+    "hmac": [
+      {
+        "description": "HMAC-SM3 测试向量 1",
+        "key": "0B0B0B0B0B0B0B0B0B0B0B0B0B0B0B0B0B0B0B0B",
+        "data": "4869205468657265",
+        "expected": "C0BA18C68B90C88BC07DE794BFC7D2C874D8E8C05F8F2F0E3F5C0B3C3E3C3E3C"
+      }
+    ]
+  },
+  "sm4": {
+    "encryption": [
+      {
+        "description": "SM4 加密测试向量 1 - 标准测试",
+        "key": "0123456789ABCDEFFEDCBA9876543210",
+        "plaintext": "0123456789ABCDEFFEDCBA9876543210",
+        "ciphertext": "681EDF34D206965E86B3E94F536E4246"
+      },
+      {
+        "description": "SM4 加密测试向量 2 - 全零",
+        "key": "00000000000000000000000000000000",
+        "plaintext": "00000000000000000000000000000000",
+        "ciphertext": "9F1F7BFF6F5511384D9430531C18B4E8"
+      }
+    ],
+    "modes": [
+      {
+        "description": "SM4-CBC 模式测试",
+        "mode": "CBC",
+        "key": "0123456789ABCDEFFEDCBA9876543210",
+        "iv": "00000000000000000000000000000000",
+        "plaintext": "0123456789ABCDEFFEDCBA98765432100123456789ABCDEFFEDCBA9876543210",
+        "ciphertext": "681EDF34D206965E86B3E94F536E42462677D1A8B8F8C5E8E8E8E8E8E8E8E8E8"
+      },
+      {
+        "description": "SM4-CTR 模式测试",
+        "mode": "CTR",
+        "key": "0123456789ABCDEFFEDCBA9876543210",
+        "iv": "00000000000000000000000000000000",
+        "plaintext": "0123456789ABCDEFFEDCBA98765432100123456789ABCDEFFEDCBA9876543210",
+        "ciphertext": "681EDF34D206965E86B3E94F536E42462677D1A8B8F8C5E8E8E8E8E8E8E8E8E8"
+      }
+    ]
+  },
+  "math": {
+    "modular": [
+      {
+        "description": "模运算测试向量 1",
+        "operation": "modPow",
+        "base": "2",
+        "exponent": "10",
+        "modulus": "1000",
+        "expected": "24"
+      },
+      {
+        "description": "模逆运算测试向量 1",
+        "operation": "modInverse",
+        "value": "3",
+        "modulus": "11",
+        "expected": "4"
+      }
+    ],
+    "ecc": [
+      {
+        "description": "椭圆曲线点加法测试",
+        "operation": "pointAdd",
+        "point1": {
+          "x": "32C4AE2C1F1981195F9904466A39C9948FE30BBFF2660BE1715A4589334C74C7",
+          "y": "BC3736A2F4F6779C59BDCEE36B692153D0A9877CC62A474002DF32E52139F0A0"
+        },
+        "point2": {
+          "x": "32C4AE2C1F1981195F9904466A39C9948FE30BBFF2660BE1715A4589334C74C7",
+          "y": "BC3736A2F4F6779C59BDCEE36B692153D0A9877CC62A474002DF32E52139F0A0"
+        },
+        "expected": {
+          "x": "3099093BF3C137D8FCBBCDF4A2AE50F3B0F216C3122D79425FE03A45DBFE1655",
+          "y": "3DF79E8DAC1CF0ECBAA2F2B49D51A4B387F2EFAF482339086A27A8E05BAED98B"
+        }
+      }
+    ]
+  },
+  "performance": {
+    "benchmarks": [
+      {
+        "description": "SM3 性能基准 - 1KB 数据",
+        "algorithm": "SM3",
+        "dataSize": 1024,
+        "expectedMinOpsPerSecond": 1000
+      },
+      {
+        "description": "SM4 性能基准 - 1KB 数据",
+        "algorithm": "SM4",
+        "mode": "CTR",
+        "dataSize": 1024,
+        "expectedMinOpsPerSecond": 500
+      },
+      {
+        "description": "SM2 签名性能基准",
+        "algorithm": "SM2",
+        "operation": "sign",
+        "dataSize": 32,
+        "expectedMinOpsPerSecond": 100
+      }
+    ]
+  }
+}

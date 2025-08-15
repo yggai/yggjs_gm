@@ -1,0 +1,49 @@
+# Source files
+src/
+tests/
+examples/
+docs/
+scripts/
+benchmarks/
+
+# Development files
+*.config.js
+*.config.ts
+.eslintrc*
+.prettierrc*
+.editorconfig
+.gitignore
+.npmignore
+
+# Development dependencies
+node_modules/
+coverage/
+.nyc_output/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env*
+
+# Build cache
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+
+# Only include dist and essential files
+!dist/
+!README.md
+!LICENSE
+!package.json
