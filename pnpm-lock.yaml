@@ -8,6 +8,12 @@ dependencies:
   big-integer:
     specifier: ^1.6.52
     version: 1.6.52
+  yggjs-gm:
+    specifier: file:yggjs-gm-0.1.0.tgz
+    version: file:yggjs-gm-0.1.0.tgz
+  yggjs_gm:
+    specifier: file:yggjs-gm-0.1.0.tgz
+    version: file:yggjs-gm-0.1.0.tgz
 
 devDependencies:
   '@rollup/plugin-commonjs':
@@ -4575,3 +4581,12 @@ packages:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
     dev: true
+
+  file:yggjs-gm-0.1.0.tgz:
+    resolution: {integrity: sha512-iZKMtGYQAvYmmfqA9OPkJqNYAV1glquYgnW5U5w22Z91SWVqjGsj2XL/c3zygBPP+tmdxq22NWVJZDwYt6mOiA==, tarball: file:yggjs-gm-0.1.0.tgz}
+    name: yggjs-gm
+    version: 0.1.0
+    engines: {node: '>=16.0.0', pnpm: '>=8.0.0'}
+    dependencies:
+      big-integer: 1.6.52
+    dev: false
