@@ -29,6 +29,15 @@ export const gm = {
   sm4: sm4Api,
   key: keyApi,
   random: randomApi,
+
+  /**
+   * 生成 SM2 密钥对 (简化接口)
+   *
+   * @returns 包含 secretKey 和 publicKey 的对象
+   */
+  getKey(): { secretKey: string; publicKey: string } {
+    return keyApi.generateSM2KeyPair();
+  },
 } as const;
 
 export default gm;
