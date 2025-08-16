@@ -35,7 +35,7 @@ export const gm = {
    *
    * @returns 包含 secretKey 和 publicKey 的对象
    */
-  getKey(): { secretKey: string; privateKey: string; publicKey: string } {
+  getKey(): { privateKey: string; publicKey: string } {
     return keyApi.generateSM2KeyPair();
   },
 
@@ -51,4 +51,3 @@ export const gm = {
 export default gm;
 
 // TODO: 实现 API 层
-console.warn('API 层模块待实现');

@@ -8,12 +8,6 @@ dependencies:
   big-integer:
     specifier: ^1.6.52
     version: 1.6.52
-  yggjs-gm:
-    specifier: file:yggjs-gm-0.1.0.tgz
-    version: file:yggjs-gm-0.1.0.tgz
-  yggjs_gm:
-    specifier: file:yggjs-gm-0.1.0.tgz
-    version: file:yggjs-gm-0.1.0.tgz
 
 devDependencies:
   '@rollup/plugin-commonjs':
@@ -27,7 +21,7 @@ devDependencies:
     version: 0.4.4(rollup@4.46.2)
   '@rollup/plugin-typescript':
     specifier: ^11.0.0
-    version: 11.1.6(rollup@4.46.2)(typescript@5.9.2)
+    version: 11.1.6(rollup@4.46.2)(tslib@2.8.1)(typescript@5.9.2)
   '@types/node':
     specifier: ^20.0.0
     version: 20.19.10
@@ -43,6 +37,9 @@ devDependencies:
   '@vitest/ui':
     specifier: ^1.0.0
     version: 1.6.1(vitest@1.6.1)
+  cross-env:
+    specifier: ^10.0.0
+    version: 10.0.0
   eslint:
     specifier: ^8.0.0
     version: 8.57.1
@@ -73,6 +70,9 @@ devDependencies:
   rollup-plugin-filesize:
     specifier: ^10.0.0
     version: 10.0.0
+  tslib:
+    specifier: ^2.8.1
+    version: 2.8.1
   tsup:
     specifier: ^8.0.0
     version: 8.5.0(typescript@5.9.2)
@@ -85,6 +85,12 @@ devDependencies:
   vitest:
     specifier: ^1.0.0
     version: 1.6.1(@types/node@20.19.10)(@vitest/ui@1.6.1)(happy-dom@12.10.3)(jsdom@23.2.0)
+  yggjs-gm:
+    specifier: file:yggjs-gm-0.1.0.tgz
+    version: file:yggjs-gm-0.1.0.tgz
+  yggjs_gm:
+    specifier: file:yggjs-gm-0.1.0.tgz
+    version: file:yggjs-gm-0.1.0.tgz
 
 packages:
 
@@ -201,6 +207,10 @@ packages:
   /@csstools/css-tokenizer@3.0.4:
     resolution: {integrity: sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==}
     engines: {node: '>=18'}
+    dev: true
+
+  /@epic-web/invariant@1.0.0:
+    resolution: {integrity: sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==}
     dev: true
 
   /@esbuild/aix-ppc64@0.21.5:
@@ -918,7 +928,7 @@ packages:
       terser: 5.43.1
     dev: true
 
-  /@rollup/plugin-typescript@11.1.6(rollup@4.46.2)(typescript@5.9.2):
+  /@rollup/plugin-typescript@11.1.6(rollup@4.46.2)(tslib@2.8.1)(typescript@5.9.2):
     resolution: {integrity: sha512-R92yOmIACgYdJ7dJ97p4K69I8gg6IEHt8M7dUBxN3W6nrO8uUxX5ixl0yU/N3aZTi8WhPuICvOHXQvF6FaykAA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -934,6 +944,7 @@ packages:
       '@rollup/pluginutils': 5.2.0(rollup@4.46.2)
       resolve: 1.22.10
       rollup: 4.46.2
+      tslib: 2.8.1
       typescript: 5.9.2
     dev: true
 
@@ -1560,7 +1571,6 @@ packages:
   /big-integer@1.6.52:
     resolution: {integrity: sha512-QxD8cf2eVqJOOz63z6JIN9BzvVs/dlySa5HGSBH5xtR8dPteIRQnBxxKqkNTiT6jbDTF6jAfrd4oMcND9RGbQg==}
     engines: {node: '>=0.6'}
-    dev: false
 
   /boxen@5.1.2:
     resolution: {integrity: sha512-9gYgQKXx+1nP8mP7CzFyaUARhg7D3n1dF/FnErWmu9l6JvGpNUN278h0aSb+QjoiKSWG+iZ3uHrcqk0qrY9RQQ==}
@@ -1789,6 +1799,15 @@ packages:
 
   /console-control-strings@1.1.0:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
+    dev: true
+
+  /cross-env@10.0.0:
+    resolution: {integrity: sha512-aU8qlEK/nHYtVuN4p7UQgAwVljzMg8hB4YK5ThRqD2l/ziSnryncPNn7bMLt5cFYsKVKBh8HqLqyCoTupEUu7Q==}
+    engines: {node: '>=20'}
+    hasBin: true
+    dependencies:
+      '@epic-web/invariant': 1.0.0
+      cross-spawn: 7.0.6
     dev: true
 
   /cross-spawn@7.0.6:
@@ -4134,6 +4153,10 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
+  /tslib@2.8.1:
+    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+    dev: true
+
   /tsup@8.5.0(typescript@5.9.2):
     resolution: {integrity: sha512-VmBp77lWNQq6PfuMqCHD3xWl22vEoWsKajkF8t+yMBawlUS8JzEI+vOVMeuNZIuMML8qXRizFKi9oD5glKQVcQ==}
     engines: {node: '>=18'}
@@ -4589,4 +4612,4 @@ packages:
     engines: {node: '>=16.0.0', pnpm: '>=8.0.0'}
     dependencies:
       big-integer: 1.6.52
-    dev: false
+    dev: true

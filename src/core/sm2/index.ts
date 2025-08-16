@@ -5,13 +5,12 @@
  */
 
 // 导出 SM2 相关功能
+export * from './curve.js';
+export * from './decrypt.js';
+export * from './encrypt.js';
 export * from './keypair.js';
 export * from './sign.js';
-export * from './verify.js';
-export * from './encrypt.js';
-export * from './decrypt.js';
-export * from './curve.js';
 export * from './sm2.types.js';
+export * from './verify.js';
 
 // TODO: 实现 SM2 算法
-console.warn('SM2 算法模块待实现');

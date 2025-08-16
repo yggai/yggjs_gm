@@ -11,42 +11,46 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isAnalyze = process.env.ANALYZE === 'true';
 
 // 通用插件配置
-const getPlugins = (platform = 'neutral') => [
-  resolve({
-    browser: platform === 'browser',
-    preferBuiltins: platform === 'node',
-    exportConditions: platform === 'browser' ? ['browser'] : ['node'],
-  }),
-  commonjs(),
-  typescript({
-    tsconfig: './tsconfig.json',
-    declaration: false, // 由单独的配置生成
-    declarationMap: false,
-    sourceMap: true,
-  }),
-  isProduction && terser({
-    compress: {
-      drop_console: false, // 保留 console，由用户决定
-      drop_debugger: true,
-      pure_funcs: ['console.debug'],
-    },
-    mangle: {
-      reserved: ['GmError'], // 保留错误类名
-    },
-    format: {
-      comments: false,
-      preamble: '/* yggjs-gm - 国密算法 TypeScript 库 */',
-    },
-  }),
-  filesize({
-    showMinifiedSize: true,
-    showGzippedSize: true,
-  }),
-  isAnalyze && analyze({
-    summaryOnly: true,
-    limit: 10,
-  }),
-].filter(Boolean);
+const getPlugins = (platform = 'neutral') =>
+  [
+    resolve({
+      browser: platform === 'browser',
+      preferBuiltins: platform === 'node',
+      exportConditions: platform === 'browser' ? ['browser'] : ['node'],
+    }),
+    commonjs(),
+    typescript({
+      tsconfig: './tsconfig.build.json',
+      declaration: false, // 由单独的配置生成
+      declarationMap: false,
+      sourceMap: true,
+      outDir: undefined,
+    }),
+    isProduction &&
+      terser({
+        compress: {
+          drop_console: false, // 保留 console，由用户决定
+          drop_debugger: true,
+          pure_funcs: ['console.debug'],
+        },
+        mangle: {
+          reserved: ['GmError'], // 保留错误类名
+        },
+        format: {
+          comments: false,
+          preamble: '/* yggjs-gm - 国密算法 TypeScript 库 */',
+        },
+      }),
+    filesize({
+      showMinifiedSize: true,
+      showGzippedSize: true,
+    }),
+    isAnalyze &&
+      analyze({
+        summaryOnly: true,
+        limit: 10,
+      }),
+  ].filter(Boolean);
 
 // 外部依赖配置
 const external = ['big-integer'];
@@ -65,7 +69,7 @@ export default defineConfig([
     external,
     plugins: getPlugins(),
   },
-  
+
   // 主包 - CJS
   {
     input: 'src/index.ts',
@@ -78,7 +82,7 @@ export default defineConfig([
     external,
     plugins: getPlugins(),
   },
-  
+
   // 浏览器专用包 - ESM (优化体积)
   {
     input: 'src/adapters/browser.ts',
@@ -90,7 +94,7 @@ export default defineConfig([
     external,
     plugins: getPlugins('browser'),
   },
-  
+
   // 浏览器专用包 - UMD (全局使用)
   {
     input: 'src/adapters/browser.ts',
@@ -106,7 +110,7 @@ export default defineConfig([
     external,
     plugins: getPlugins('browser'),
   },
-  
+
   // Node.js 专用包
   {
     input: 'src/adapters/node.ts',
@@ -126,7 +130,7 @@ export default defineConfig([
     external: nodeExternal,
     plugins: getPlugins('node'),
   },
-  
+
   // 按需导入 - 核心算法模块
   {
     input: {
@@ -155,7 +159,7 @@ export default defineConfig([
     external,
     plugins: getPlugins(),
   },
-  
+
   // 类型声明文件
   {
     input: 'src/index.ts',
@@ -165,7 +169,7 @@ export default defineConfig([
     },
     plugins: [dts()],
   },
-  
+
   // 适配器类型声明
   {
     input: {
@@ -178,7 +182,7 @@ export default defineConfig([
     },
     plugins: [dts()],
   },
-  
+
   // 核心模块类型声明
   {
     input: {
