@@ -4583,7 +4583,7 @@ packages:
     dev: true
 
   file:yggjs-gm-0.1.0.tgz:
-    resolution: {integrity: sha512-iZKMtGYQAvYmmfqA9OPkJqNYAV1glquYgnW5U5w22Z91SWVqjGsj2XL/c3zygBPP+tmdxq22NWVJZDwYt6mOiA==, tarball: file:yggjs-gm-0.1.0.tgz}
+    resolution: {integrity: sha512-TSC6wsDlZFavi5xr87m0Mba47Rzy9IJl/O79FQMWTo4JKevcUP/8hCCV5mlr1X8LRURpwv0jT33KhQON95067g==, tarball: file:yggjs-gm-0.1.0.tgz}
     name: yggjs-gm
     version: 0.1.0
     engines: {node: '>=16.0.0', pnpm: '>=8.0.0'}

@@ -25,6 +25,13 @@ export * as utils from './utils/index.js';
 // 默认导出统一 API
 export { gm as default } from './api/index.js';
 
+// 兼容示例中的 print 调用（不推荐在应用中依赖此全局）
+try {
+  if (typeof globalThis !== 'undefined' && !(globalThis as any).print) {
+    (globalThis as any).print = (...args: any[]) => console.log(...args);
+  }
+} catch {}
+
 // 版本信息
 export const VERSION = '0.1.0';
 

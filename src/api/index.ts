@@ -35,8 +35,16 @@ export const gm = {
    *
    * @returns 包含 secretKey 和 publicKey 的对象
    */
-  getKey(): { secretKey: string; publicKey: string } {
+  getKey(): { secretKey: string; privateKey: string; publicKey: string } {
     return keyApi.generateSM2KeyPair();
+  },
+
+  // 供示例使用的字符串加解密封装
+  sm2Encrypt(publicKeyHex: string, plaintextUtf8: string): string {
+    return sm2Api.sm2EncryptString(publicKeyHex, plaintextUtf8);
+  },
+  sm2Decrypt(privateKeyHex: string, ciphertextHex: string): string {
+    return sm2Api.sm2DecryptString(privateKeyHex, ciphertextHex);
   },
 } as const;
 

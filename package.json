@@ -162,6 +162,7 @@
   "sideEffects": false,
   "dependencies": {
     "big-integer": "^1.6.52",
-    "yggjs-gm": "file:yggjs-gm-0.1.0.tgz"
+    "yggjs-gm": "file:yggjs-gm-0.1.0.tgz",
+    "yggjs_gm": "file:yggjs-gm-0.1.0.tgz"
   }
 }

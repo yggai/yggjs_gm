@@ -49,9 +49,9 @@ export async function exportKey(format: string, key: any): Promise<Uint8Array> {
 /**
  * 生成 SM2 密钥对并返回十六进制字符串格式
  *
- * @returns 包含 secretKey 和 publicKey 的对象
+ * @returns 包含 secretKey/privateKey 和 publicKey 的对象
  */
-export function generateSM2KeyPair(): { secretKey: string; publicKey: string } {
+export function generateSM2KeyPair(): { secretKey: string; privateKey: string; publicKey: string } {
   const keyPair = generateKeyPair();
 
   // 将私钥转换为 64 位十六进制字符串 (32 字节)
@@ -64,6 +64,7 @@ export function generateSM2KeyPair(): { secretKey: string; publicKey: string } {
 
   return {
     secretKey,
+    privateKey: secretKey,
     publicKey,
   };
 }
