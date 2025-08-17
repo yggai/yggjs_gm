@@ -32,7 +32,18 @@ const sm2Encrypt = (publicKey: string, text: string) => {
   return sm2.doEncrypt(text, publicKey, 0);
 };
 
+/**
+ * 使用sm2算法解密
+ * @param privateKey
+ * @param encryptedText
+ * @returns
+ */
+const sm2Decrypt = (privateKey: string, encryptedText: string) => {
+  return sm2.doDecrypt(encryptedText, privateKey, 0);
+};
+
 export default {
   getKey,
   sm2Encrypt,
+  sm2Decrypt,
 };
