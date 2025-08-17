@@ -1,90 +1,77 @@
+PolyForm Noncommercial License 1.0.0
 
-PolyForm Noncommercial 1.0.0
+Required Notice: Copyright (c) 2025 源滚滚
+Required Notice: Author contact 1156956636.com
 
-Copyright (c) 2025 源滚滚
+Acceptance
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-use the Software solely for noncommercial purposes, subject to the
-following conditions.
+In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
 
-1. Definitions
+Copyright License
 
-	a. "Commercial Use" means using, copying, modifying, or distributing the
-		 Software, or any derivative works, for commercial purposes, including
-		 but not limited to: offering the Software as part of a service for a
-		 fee, using the Software to provide revenue-generating functionality,
-		 selling the Software, or otherwise exploiting the Software for
-		 commercial advantage or monetary compensation.
+The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose. However, you may only distribute the software according to Distribution License and make changes or new works based on the software according to Changes and New Works License.
 
-	b. "Noncommercial Use" means use of the Software for personal,
-		 educational, academic research, or other purposes that are not
-		 Commercial Use.
+Distribution License
 
-2. Grant of Rights
+The licensor grants you an additional copyright license to distribute copies of the software. Your license to distribute covers distributing the software with changes and new works permitted by Changes and New Works License.
 
-	Subject to the terms and conditions of this License, the Licensor hereby
-	grants to You a worldwide, non-exclusive, non-transferable, non-sublicensable
-	license to exercise the rights in the Software as expressly permitted by
-	this License, solely for Noncommercial Use. The rights granted under this
-	License may include the right to reproduce, prepare derivative works of,
-	publicly display, publicly perform, sublicense (only as permitted below),
-	and distribute the Software, but only to the extent necessary to exercise
-	the rights granted for Noncommercial Use.
+Notices
 
-3. Restrictions
+You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these terms or the URL for them above, as well as copies of any plain-text lines beginning with Required Notice: that the licensor provided with the software. For example:
 
-	a. You may not use the Software for Commercial Use without obtaining a
-		 separate written license from the Licensor that expressly permits such
-		 Commercial Use.
+Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
 
-	b. You may not remove, obscure, or alter any copyright, trademark, patent
-		 or other proprietary notices contained in the Software.
+Changes and New Works License
 
-4. Termination
+The licensor grants you an additional copyright license to make changes and new works based on the software for any permitted purpose.
 
-	This License and the rights granted hereunder will terminate automatically
-	if You fail to comply with any of the terms of this License. Upon
-	termination, You must cease all use of the Software and destroy all copies
-	of the Software in Your possession or control, except to the extent any
-	licenses granted by third parties to You are unaffected.
+Patent License
 
-5. Disclaimer of Warranty
+The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
-	THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-	IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Noncommercial Purposes
 
-6. Limitation of Liability
+Any noncommercial purpose is a permitted purpose.
 
-	IN NO EVENT WILL THE LICENSOR BE LIABLE FOR ANY LOST REVENUE, PROFIT OR
-	DATA, OR FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR
-	PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY,
-	ARISING OUT OF OR IN CONNECTION WITH THIS LICENSE OR THE USE OF OR INABILITY
-	TO USE THE SOFTWARE.
+Personal Uses
 
-7. Governing Law
+Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
 
-	This License will be governed by and construed in accordance with the laws
-	of the jurisdiction in which the Licensor is located, without regard to
-	conflicts of law principles.
+Noncommercial Organizations
 
-8. Miscellaneous
+Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
 
-	If any provision of this License is held to be unenforceable, such
-	provision shall be reformed only to the extent necessary to make it
-	enforceable, and the remaining provisions of this License will remain in
-	full force and effect.
+Fair Use
+
+You may have "fair use" rights for the software under the law. These terms do not limit them.
+
+No Other Rights
+
+These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else. These terms do not imply any other licenses.
+
+Patent Defense
+
+If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
+
+Violations
+
+The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice. Otherwise, all your licenses end immediately.
+
+No Liability
+
+As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.
+
+Definitions
+
+The licensor is the individual or entity offering these terms, and the software is the software the licensor makes available under these terms.
+
+You refers to the individual or entity agreeing to these terms.
+
+Your company is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization. Control means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise. Control can be direct or indirect.
+
+Your licenses are all the licenses granted to you for the software under these terms.
+
+Use means anything you do with the software requiring one of your licenses.
 
 For the official authoritative text and any updates, see:
 https://polyformproject.org/licenses/noncommercial/1.0.0/
-
----
-Notes:
-- Replace <YEAR> and <COPYRIGHT HOLDER> with the appropriate values.
-- This file includes the full human-readable license summary appropriate for
-	repository distribution; the official license text at the link above is the
-	authoritative version.
