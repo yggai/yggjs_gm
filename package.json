@@ -166,6 +166,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "big-integer": "^1.6.52"
+    "big-integer": "^1.6.52",
+    "sm-crypto": "^0.3.13"
   }
 }
