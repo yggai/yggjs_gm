@@ -72,20 +72,54 @@ export async function decrypt(
  * - publicKeyHex: 04||X||Y（十六进制未压缩公钥）
  * - privateKeyHex: 64 位十六进制私钥
  * - 明文为 UTF-8 字符串
- * - 密文返回为十六进制字符串（C1C2C3）
+ * - 默认返回 C1C3C2（便于与 Python 等实现互通）；解密同时兼容 C1C3C2/C1C2C3
  */
 export function sm2EncryptString(publicKeyHex: string, plaintextUtf8: string): string {
   const pub = parsePublicKey(publicKeyHex);
   const pt = utf8ToBytes(plaintextUtf8);
-  const ctBytes = sm2EncryptCore(pub, pt);
-  return bytesToHex(ctBytes);
+  // 核心返回 C1C2C3，这里转换为 C1C3C2 以提升互通性
+  const c1c2c3 = sm2EncryptCore(pub, pt);
+  const c1c3c2 = reorderC1C2C3_to_C1C3C2(c1c2c3);
+  return bytesToHex(c1c3c2);
 }
 
 export function sm2DecryptString(privateKeyHex: string, ciphertextHex: string): string {
   const pri = parsePrivateKey(privateKeyHex);
   const ct = hexToBytes(ciphertextHex);
-  const ptBytes = sm2DecryptCore(pri, ct);
+  let ptBytes: Uint8Array;
+  try {
+    // 优先按 C1C3C2 -> C1C2C3 转换后解密
+    const c1c2c3 = reorderC1C3C2_to_C1C2C3(ct);
+    ptBytes = sm2DecryptCore(pri, c1c2c3);
+  } catch {
+    // 回退：按原始内容（可能已是 C1C2C3）解密
+    ptBytes = sm2DecryptCore(pri, ct);
+  }
   return bytesToUtf8(ptBytes);
+}
+
+function reorderC1C2C3_to_C1C3C2(ct: Uint8Array): Uint8Array {
+  if (ct.length < 65 + 32) return ct;
+  const c1 = ct.subarray(0, 65);
+  const c2 = ct.subarray(65, ct.length - 32);
+  const c3 = ct.subarray(ct.length - 32);
+  const out = new Uint8Array(ct.length);
+  out.set(c1, 0);
+  out.set(c3, 65);
+  out.set(c2, 97);
+  return out;
+}
+
+function reorderC1C3C2_to_C1C2C3(ct: Uint8Array): Uint8Array {
+  if (ct.length < 65 + 32) return ct;
+  const c1 = ct.subarray(0, 65);
+  const c3 = ct.subarray(65, 97);
+  const c2 = ct.subarray(97);
+  const out = new Uint8Array(ct.length);
+  out.set(c1, 0);
+  out.set(c2, 65);
+  out.set(c3, 65 + c2.length);
+  return out;
 }
 
 function parsePublicKey(hex: string): SM2PublicKey {
