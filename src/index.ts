@@ -6,20 +6,33 @@
  * @author YggJS Team
  * @license Apache-2.0
  */
-import { gm } from './api/index';
 
-export const VERSION = __VERSION__ as string;
+import { sm2 } from 'sm-crypto';
 
-export const LIB_INFO = {
-  name: 'yggjs-gm',
-  version: VERSION,
-  description: '国密算法 TypeScript 库',
-  algorithms: ['SM2', 'SM3', 'SM4'] as const,
-  author: 'YggJS Team',
-  license: 'Apache-2.0',
-} as const;
+/**
+ * 生成密钥对
+ */
+const getKey = () => {
+  const keypair = sm2.generateKeyPairHex();
+  const privateKey = keypair.privateKey; // 64字符私钥
+  const publicKey = keypair.publicKey; // 04开头公钥
+  return {
+    privateKey,
+    publicKey,
+  };
+};
 
-export { gm, gm as default };
-export * as sm2 from './api/sm2';
-export * as key from './api/key';
+/**
+ * 使用sm2算法加密
+ * @param publicKey
+ * @param text
+ * @returns
+ */
+const sm2Encrypt = (publicKey: string, text: string) => {
+  return sm2.doEncrypt(text, publicKey, 0);
+};
 
+export default {
+  getKey,
+  sm2Encrypt,
+};
