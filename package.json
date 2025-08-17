@@ -1,6 +1,6 @@
 {
   "name": "yggjs-gm",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "国密算法 TypeScript 库 - 支持 SM2/SM3/SM4 算法的现代化实现",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -105,7 +105,7 @@
     "typedoc": "^0.25.0",
     "typescript": "^5.0.0",
     "vitest": "^1.0.0",
-    "yggjs-gm": "^0.1.3"
+    "yggjs-gm": "^0.1.5"
   },
   "sideEffects": false,
   "dependencies": {

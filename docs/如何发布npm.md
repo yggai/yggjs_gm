@@ -21,5 +21,6 @@ pnpm add -D yggjs-gm@latest
 
 ```bash
 node examples/c01_get_key.js
-node examples/c02_sm2_encrypt_decrypt.js
+node examples/c02_sm2_encrypt.js
+node examples/c03_sm2_decrypt.js
 ```
