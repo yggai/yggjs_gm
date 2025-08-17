@@ -10,3 +10,16 @@ npm config set registry https://registry.npmjs.org/
 ## 安装临时使用国内源
 
 npm install <package> --registry=https://registry.npmmirror.com
+
+## 安装验证
+
+```bash
+pnpm add -D yggjs-gm@latest
+```
+
+执行示例：
+
+```bash
+node examples/c01_get_key.js
+node examples/c02_sm2_encrypt_decrypt.js
+```

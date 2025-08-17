@@ -92,8 +92,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.6.1(@types/node@20.19.10)(@vitest/ui@1.6.1)(happy-dom@12.10.3)(jsdom@23.2.0)
   yggjs-gm:
-    specifier: file:yggjs-gm-0.1.0.tgz
-    version: file:yggjs-gm-0.1.0.tgz
+    specifier: ^0.1.2
+    version: 0.1.2
   yggjs_gm:
     specifier: file:yggjs-gm-0.1.0.tgz
     version: file:yggjs-gm-0.1.0.tgz
@@ -3024,7 +3024,6 @@ packages:
 
   /jsbn@1.1.0:
     resolution: {integrity: sha512-4bYVV3aAMtDTTu4+xsDYa6sy9GyJ69/amsu9sYF2zqjiEoZA5xJi3BrfX3uY+/IekIu7MwdObdbDWpoZdBv3/A==}
-    dev: false
 
   /jsdom@23.2.0:
     resolution: {integrity: sha512-L88oL7D/8ufIES+Zjz7v0aes+oBMh2Xnh3ygWvL0OaICOomKEPKuPnIfBJekiXr+BHbbMjrWn/xqrDQuxFTeyA==}
@@ -4217,7 +4216,6 @@ packages:
     resolution: {integrity: sha512-ztNF+pZq6viCPMA1A6KKu3bgpkmYti5avykRHbcFIdSipFdkVmfUw2CnpM2kBJyppIalqvczLNM3wR8OQ0pT5w==}
     dependencies:
       jsbn: 1.1.0
-    dev: false
 
   /smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
@@ -5016,6 +5014,14 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: true
+
+  /yggjs-gm@0.1.2:
+    resolution: {integrity: sha512-70v8apQLHIcp/1yaDBsZpndvaYcCB3P/GNaylejbsbjyTCnI3s8mZz0XKRLZRFkIIaUFKJp6Fx1rQUqzqydLhQ==}
+    engines: {node: '>=16.0.0', pnpm: '>=8.0.0'}
+    dependencies:
+      big-integer: 1.6.52
+      sm-crypto: 0.3.13
     dev: true
 
   /yocto-queue@0.1.0:

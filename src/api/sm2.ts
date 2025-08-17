@@ -1,141 +1,44 @@
+import { sm2 } from 'sm-crypto';
+
 /**
- * SM2 高级 API
- *
- * @description 提供易用的 SM2 算法接口
+ * SM2 高级 API（精简版）
+ * - 直接使用 sm-crypto 作为底层
+ * - 字符串级 API 满足 examples 所需
  */
 
-import { decrypt as sm2DecryptCore } from '../core/sm2/decrypt.js';
-import { encrypt as sm2EncryptCore } from '../core/sm2/encrypt.js';
-import type {
-  SM2EncryptionOptions,
-  SM2KeyPair,
-  SM2PrivateKey,
-  SM2PublicKey,
-  SM2SignatureOptions,
-} from '../core/sm2/sm2.types.js';
-import { bytesToHex, bytesToUtf8, hexToBytes, utf8ToBytes } from './encoding.js';
-
 /**
- * 生成 SM2 密钥对（占位，暂未使用此高阶接口）
- */
-export async function generateKeyPair(): Promise<SM2KeyPair> {
-  throw new Error('SM2 密钥对生成 API 待实现');
-}
-
-/**
- * SM2 数字签名（占位）
- */
-export async function sign(
-  privateKey: any,
-  data: Uint8Array,
-  options?: SM2SignatureOptions
-): Promise<Uint8Array> {
-  throw new Error('SM2 签名 API 待实现');
-}
-
-/**
- * SM2 签名验证（占位）
- */
-export async function verify(
-  publicKey: any,
-  data: Uint8Array,
-  signature: Uint8Array,
-  options?: SM2SignatureOptions
-): Promise<boolean> {
-  throw new Error('SM2 验证 API 待实现');
-}
-
-/**
- * SM2 公钥加密（字节级）
- */
-export async function encrypt(
-  publicKey: SM2PublicKey,
-  plaintext: Uint8Array,
-  options?: SM2EncryptionOptions
-): Promise<Uint8Array> {
-  return sm2EncryptCore(publicKey, plaintext, options);
-}
-
-/**
- * SM2 私钥解密（字节级）
- */
-export async function decrypt(
-  privateKey: SM2PrivateKey,
-  ciphertext: Uint8Array,
-  options?: SM2EncryptionOptions
-): Promise<Uint8Array> {
-  return sm2DecryptCore(privateKey, ciphertext, options);
-}
-
-/**
- * 供示例使用的字符串友好接口：
- * - publicKeyHex: 04||X||Y（十六进制未压缩公钥）
- * - privateKeyHex: 64 位十六进制私钥
- * - 明文为 UTF-8 字符串
- * - 默认返回 C1C3C2（便于与 Python 等实现互通）；解密同时兼容 C1C3C2/C1C2C3
+ * 字符串加密
+ * - 输入：publicKeyHex（04 + X + Y，130 hex），plaintextUtf8（UTF-8 字符串）
+ * - 输出：密文十六进制（C1C3C2）
  */
 export function sm2EncryptString(publicKeyHex: string, plaintextUtf8: string): string {
-  const pub = parsePublicKey(publicKeyHex);
-  const pt = utf8ToBytes(plaintextUtf8);
-  // 核心返回 C1C2C3，这里转换为 C1C3C2 以提升互通性
-  const c1c2c3 = sm2EncryptCore(pub, pt);
-  const c1c3c2 = reorderC1C2C3_to_C1C3C2(c1c2c3);
-  return bytesToHex(c1c3c2);
+  // 使用 sm-crypto 按 C1C3C2 输出（1 表示 C1C3C2）
+  return sm2.doEncrypt(plaintextUtf8, publicKeyHex, 1);
 }
 
+/**
+ * 字符串解密
+ * - 输入：privateKeyHex（64 hex），ciphertextHex（C1C3C2 或 C1C2C3）
+ * - 输出：UTF-8 明文
+ */
 export function sm2DecryptString(privateKeyHex: string, ciphertextHex: string): string {
-  const pri = parsePrivateKey(privateKeyHex);
-  const ct = hexToBytes(ciphertextHex);
-  let ptBytes: Uint8Array;
+  // 优先尝试 C1C3C2，失败时尝试将 C1C2C3 转换为 C1C3C2
   try {
-    // 优先按 C1C3C2 -> C1C2C3 转换后解密
-    const c1c2c3 = reorderC1C3C2_to_C1C2C3(ct);
-    ptBytes = sm2DecryptCore(pri, c1c2c3);
+    return sm2.doDecrypt(ciphertextHex, privateKeyHex, 1);
   } catch {
-    // 回退：按原始内容（可能已是 C1C2C3）解密
-    ptBytes = sm2DecryptCore(pri, ct);
+    const fixed = reorderHex_C1C2C3_to_C1C3C2(ciphertextHex);
+    return sm2.doDecrypt(fixed, privateKeyHex, 1);
   }
-  return bytesToUtf8(ptBytes);
 }
 
-function reorderC1C2C3_to_C1C3C2(ct: Uint8Array): Uint8Array {
-  if (ct.length < 65 + 32) return ct;
-  const c1 = ct.subarray(0, 65);
-  const c2 = ct.subarray(65, ct.length - 32);
-  const c3 = ct.subarray(ct.length - 32);
-  const out = new Uint8Array(ct.length);
-  out.set(c1, 0);
-  out.set(c3, 65);
-  out.set(c2, 97);
-  return out;
+function reorderHex_C1C2C3_to_C1C3C2(hex: string): string {
+  let h = hex.trim().toLowerCase();
+  if (h.startsWith('0x')) h = h.slice(2);
+  if (h.length < 2 + 64 + 64) return h; // 长度不够
+  if (!h.startsWith('04')) return h; // 非未压缩点
+  const c1 = h.slice(0, 130); // 1 + 64 + 64 = 130 hex
+  const c3 = h.slice(-64);
+  const c2 = h.slice(130, -64);
+  return c1 + c3 + c2;
 }
 
-function reorderC1C3C2_to_C1C2C3(ct: Uint8Array): Uint8Array {
-  if (ct.length < 65 + 32) return ct;
-  const c1 = ct.subarray(0, 65);
-  const c3 = ct.subarray(65, 97);
-  const c2 = ct.subarray(97);
-  const out = new Uint8Array(ct.length);
-  out.set(c1, 0);
-  out.set(c2, 65);
-  out.set(c3, 65 + c2.length);
-  return out;
-}
-
-function parsePublicKey(hex: string): SM2PublicKey {
-  let h = hex.trim();
-  if (h.startsWith('0x') || h.startsWith('0X')) h = h.slice(2);
-  if (h.startsWith('04')) h = h.slice(2);
-  if (h.length !== 128) throw new Error('无效的公钥长度');
-  const x = BigInt('0x' + h.slice(0, 64));
-  const y = BigInt('0x' + h.slice(64));
-  return { algorithm: 'SM2', point: { x, y } };
-}
-
-function parsePrivateKey(hex: string): SM2PrivateKey {
-  let h = hex.trim();
-  if (h.startsWith('0x') || h.startsWith('0X')) h = h.slice(2);
-  if (h.length !== 64) throw new Error('无效的私钥长度');
-  const d = BigInt('0x' + h);
-  return { algorithm: 'SM2', d };
-}

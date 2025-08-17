@@ -1,11 +1,10 @@
+import { sm2 } from 'sm-crypto';
+
 /**
  * 密钥管理 API
  *
  * @description 提供密钥生成、导入、导出功能
  */
-
-// 使用 sm-crypto 库进行密钥生成
-import { sm2 } from 'sm-crypto';
 
 /**
  * 生成密钥
@@ -14,7 +13,6 @@ import { sm2 } from 'sm-crypto';
  * @returns 密钥
  */
 export async function generate(algorithm: string): Promise<any> {
-  // TODO: 实现密钥生成 API
   throw new Error('密钥生成 API 待实现');
 }
 
@@ -29,9 +27,8 @@ export async function generate(algorithm: string): Promise<any> {
 export async function importKey(
   format: string,
   keyData: Uint8Array,
-  algorithm: string
+  algorithm: string,
 ): Promise<any> {
-  // TODO: 实现密钥导入 API
   throw new Error('密钥导入 API 待实现');
 }
 
@@ -43,7 +40,6 @@ export async function importKey(
  * @returns 密钥数据
  */
 export async function exportKey(format: string, key: any): Promise<Uint8Array> {
-  // TODO: 实现密钥导出 API
   throw new Error('密钥导出 API 待实现');
 }
 
@@ -53,7 +49,11 @@ export async function exportKey(format: string, key: any): Promise<Uint8Array> {
  *
  * @returns 包含 privateKey 和 publicKey 的对象
  */
-export function generateSM2KeyPair(): { secretKey: string; privateKey: string; publicKey: string } {
+export function generateSM2KeyPair(): {
+  secretKey: string;
+  privateKey: string;
+  publicKey: string;
+} {
   const keypair = sm2.generateKeyPairHex();
   return {
     secretKey: keypair.privateKey,
@@ -61,3 +61,4 @@ export function generateSM2KeyPair(): { secretKey: string; privateKey: string; p
     publicKey: keypair.publicKey,
   };
 }
+

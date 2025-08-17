@@ -1,73 +1,26 @@
 {
   "name": "yggjs-gm",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "国密算法 TypeScript 库 - 支持 SM2/SM3/SM4 算法的现代化实现",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "browser": "./dist/browser.esm.js",
-  "unpkg": "./dist/browser.umd.js",
-  "jsdelivr": "./dist/browser.umd.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./node": {
-      "types": "./dist/adapters/node.d.ts",
-      "import": "./dist/adapters/node.js",
-      "require": "./dist/adapters/node.cjs"
-    },
-    "./browser": {
-      "types": "./dist/adapters/browser.d.ts",
-      "import": "./dist/adapters/browser.js"
-    },
-    "./core/sm2": {
-      "types": "./dist/core/sm2/index.d.ts",
-      "import": "./dist/core/sm2/index.js",
-      "require": "./dist/core/sm2/index.cjs"
-    },
-    "./core/sm3": {
-      "types": "./dist/core/sm3/index.d.ts",
-      "import": "./dist/core/sm3/index.js",
-      "require": "./dist/core/sm3/index.cjs"
-    },
-    "./core/sm4": {
-      "types": "./dist/core/sm4/index.d.ts",
-      "import": "./dist/core/sm4/index.js",
-      "require": "./dist/core/sm4/index.cjs"
-    },
-    "./core/math": {
-      "types": "./dist/core/math/index.d.ts",
-      "import": "./dist/core/math/index.js",
-      "require": "./dist/core/math/index.cjs"
-    },
     "./api/sm2": {
       "types": "./dist/api/sm2.d.ts",
       "import": "./dist/api/sm2.js",
       "require": "./dist/api/sm2.cjs"
     },
-    "./api/sm3": {
-      "types": "./dist/api/sm3.d.ts",
-      "import": "./dist/api/sm3.js",
-      "require": "./dist/api/sm3.cjs"
-    },
-    "./api/sm4": {
-      "types": "./dist/api/sm4.d.ts",
-      "import": "./dist/api/sm4.js",
-      "require": "./dist/api/sm4.cjs"
-    },
     "./api/key": {
       "types": "./dist/api/key.d.ts",
       "import": "./dist/api/key.js",
       "require": "./dist/api/key.cjs"
-    },
-    "./api/random": {
-      "types": "./dist/api/random.d.ts",
-      "import": "./dist/api/random.js",
-      "require": "./dist/api/random.cjs"
     },
     "./package.json": "./package.json"
   },
@@ -104,7 +57,7 @@
     "docs:build": "typedoc",
     "benchmark": "node scripts/benchmark.js",
     "size-check": "pnpm build:rollup:analyze",
-    "prepublishOnly": "pnpm run build:all"
+    "prepublishOnly": "pnpm -s build"
   },
   "keywords": [
     "cryptography",
@@ -161,7 +114,7 @@
     "typedoc": "^0.25.0",
     "typescript": "^5.0.0",
     "vitest": "^1.0.0",
-    "yggjs-gm": "file:yggjs-gm-0.1.0.tgz",
+    "yggjs-gm": "^0.1.2",
     "yggjs_gm": "file:yggjs-gm-0.1.0.tgz"
   },
   "sideEffects": false,

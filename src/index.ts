@@ -6,34 +6,20 @@
  * @author YggJS Team
  * @license Apache-2.0
  */
+import { gm } from './api/index';
 
-// 导出核心算法 (命名空间导出避免冲突)
-export * as core from './core/index.js';
+export const VERSION = __VERSION__ as string;
 
-// 导出 API 层
-export * from './api/index.js';
-
-// 导出类型定义
-export * from './types/index.js';
-
-// 导出常量
-export * from './constants/index.js';
-
-// 导出工具函数 (命名空间导出避免冲突)
-export * as utils from './utils/index.js';
-
-// 默认导出统一 API
-export { gm as default } from './api/index.js';
-
-// 版本信息
-export const VERSION = '0.1.0';
-
-// 库信息
 export const LIB_INFO = {
   name: 'yggjs-gm',
   version: VERSION,
   description: '国密算法 TypeScript 库',
-  algorithms: ['SM2', 'SM3', 'SM4'],
+  algorithms: ['SM2', 'SM3', 'SM4'] as const,
   author: 'YggJS Team',
   license: 'Apache-2.0',
 } as const;
+
+export { gm, gm as default };
+export * as sm2 from './api/sm2';
+export * as key from './api/key';
+
